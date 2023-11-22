@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width" />
 
     <?php
-        require_once('stylesheets.php');
+        require_once('includes/stylesheets.php');
     ?>
 	
     <!-- Bootstrap wizard -->

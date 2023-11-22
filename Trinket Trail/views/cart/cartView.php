@@ -1,16 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Secondhand Shop Cart</title>
-    
-    <?php
-        require_once('stylesheets.php');
-    ?>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Trinket Trail - Shopping Cart</title>
+<meta name="description" content>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <style>
+<?php
+    include_once(__DIR__ . '/../includes/stylesheets.php');
+?>
+
+<!-- TODO: move this to a separate CSS file -->
+<style>
         body {
             font-family: Arial, sans-serif;
             background-color: #0B0C10;
@@ -79,37 +81,28 @@
             color: #C5C6C7;
         }
     </style>
+
 </head>
-
 <body>
-    
     <main>
-        <div class="cart-item">
-            <div class="product-image-container">
-                <img class="product-image" src="product1.jpg" alt="Product Image">
-            </div>
-            <div class="product-details">
-                <div class="product-name">Laptop</div>
-                <div class="product-category">Electronics</div>
-                <div class="product-price">$499.99</div>
-                <div class="product-description">A high-quality used laptop in excellent condition.</div>
-                <div class="seller-info">Sold by: John Doe</div>
-            </div>
-        </div>
-
-        <div class="cart-item">
-            <div class="product-image-container">
-                <img class="product-image" src="product2.jpg" alt="Product Image">
-            </div>
-            <div class="product-details">
-                <div class="product-name">Vintage Chair</div>
-                <div class="product-category">Furniture</div>
-                <div class="product-price">$29.99</div>
-                <div class="product-description">A beautifully crafted vintage chair with unique details.</div>
-                <div class="seller-info">Sold by: Jane Smith</div>
-            </div>
-        </div>
+        <?php if (!empty($cart)): ?>
+            <?php foreach ($cart as $cartLine): ?>
+                <div class="cart-item">
+                    <div class="product-image-container">
+                        <img class="product-image" src="/assets/img/products/<?php echo $product['ProductID']; ?>.webp" alt="Product Image">
+                    </div>
+                    <div class="product-details">
+                        <div class="product-name"><?php echo htmlentities($cartLine['ProductName']);?></div>
+                        <div class="product-category">Category</div>
+                        <div class="product-price"><?php echo htmlentities($cartLine['Price']);?></div>
+                        <div class="product-description"><?php echo htmlentities($cartLine['Description']);?></div>
+                        <div class="seller-info">Sold by: John Doe</div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        <?php else: ?>
+            <p>Your cart is empty.</p>
+        <?php endif ?>
     </main>
 </body>
-
 </html>

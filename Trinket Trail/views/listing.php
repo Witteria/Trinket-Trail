@@ -10,9 +10,15 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
 
-    <?php
-        require_once('stylesheets.php');
-    ?>
+	<!--     Fonts and icons     -->
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.css" rel="stylesheet">
+
+	<!-- CSS Files -->
+    <link href="bootstrap.min.css" rel="stylesheet" />
+	<link href="gsdk-bootstrap-wizard.css" rel="stylesheet" />
+
+	<!-- CSS Just for demo purpose, don't include it in your project -->
+	<link href="demo.css" rel="stylesheet" />
 
 </head>
 
