@@ -60,7 +60,7 @@
   <div class="container">
     <div class="logo-container">
       <a href= "index.php">
-        <img src="common\img\logo_main.png" alt="Logo">
+        <img src="/assets/img/logo_main.png" alt="Logo">
       </a>
     </div>
     <div class="login-container">

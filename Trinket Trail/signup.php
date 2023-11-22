@@ -15,7 +15,7 @@
     ?>
 	
     <!-- Bootstrap wizard -->
-    <link href="gsdk-bootstrap-wizard.css" rel="stylesheet" />
+    <link href="/assets/css/gsdk-bootstrap-wizard.css" rel="stylesheet" />
 </head>
 
 <body>

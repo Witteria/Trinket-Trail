@@ -93,7 +93,7 @@
 
                 <div class="card-container">
                     <div class="card">
-                        <img src="/webdev/Trinket Trail/common/img/jan.jpg" class="card-img-top img-fluid">
+                        <img src="/assets/img/jan.jpg" class="card-img-top img-fluid">
                         <div class="card-body">
                             <p class="card-text">Hey!
                                 I'm an avid gamer who loves virtual adventures and friendly competitions. When not gaming, I enjoy hands-on work with motors and cars, and strumming my guitar for relaxation. Music is a significant part of my life, allowing me to express myself. Fascinated by computers and technology, I'm always exploring the latest gadgets. These diverse passions shape me a curious explorer, eager to enjoy life's journey.</p>
@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="card">
-                        <img src="/webdev/Trinket Trail/common/img/anthony.jpg" class="card-img-top img-fluid">
+                        <img src="/assets/img/anthony.jpg" class="card-img-top img-fluid">
                         <div class="card-body">
                             <p class="card-text">Hey there!
                                 I'm Anthony Verleye, an 18-year-old enthusiast diving into the world of IT Management at the Ensor Institute in Oostende. When I'm not immersed in the digital landscape, you'll find me navigating the teamwork at a local supermarket. Beyond my academic pursuits, my interests extend to the intricate world of automobiles, reflecting my fascination with their mechanics. Gaming is another passion of mine, where I find joy in virtual adventures and friendly competitions.</p>
@@ -109,7 +109,7 @@
                     </div>
 
                     <div class="card">
-                        <img src="/webdev/Trinket Trail/common/img/quinten.jpg" class="card-img-top img-fluid">
+                        <img src="/assets/img/quinten.jpg" class="card-img-top img-fluid">
                         <div class="card-body">
                             <p class="card-text">Hey, I'm Quinten Vanhercke, a 17-year-old student passionate about gaming and technology. Engaged in a captivating project blending my love for tech and interest in online commerce. Beyond the digital realm, I have a deep affection for motorcycles, finding inspiration and relaxation in their world. Striving to strike the perfect balance between these passions in my daily life.</p>
                         </div>
