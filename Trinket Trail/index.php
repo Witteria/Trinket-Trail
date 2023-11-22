@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Trinket Trail</title>
 
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles -->
+    <?php
+        require_once('stylesheets.php');
+    ?>    
+   
+   <!-- Custom styles -->
     <style>
         body {
             background-color: #0B0C10;

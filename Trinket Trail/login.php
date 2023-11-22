@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Login Page</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
+
+  <?php
+    require_once('stylesheets.php');
+  ?>
+
+<style>
     body {
       background-color: #000000;
       color: #C5C6C7;
