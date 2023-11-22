@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>About us</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/css/nav.css" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="stylesheet" href="/common/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/common/css/style.css">
+
+    <?php
+        require_once('stylesheets.php');
+    ?>    
+
     <style>
         body {
             background-color: #0B0C10;
