@@ -61,7 +61,7 @@
     </div>
     <div class="login-container">
       <h2 class="mb-4">Login</h2>
-      <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+      <form method="post" action="">
         <div class="form-group">
           <label for="username">Username</label>
           <input type="text" class="form-control" id="username" name="username" placeholder="Enter your username">
