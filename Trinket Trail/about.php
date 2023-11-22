@@ -8,9 +8,8 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
     <link href="/assets/css/nav.css" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
-    <link rel="stylesheet" href="common/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="common/css/bootstrap.min.css">
-    <link rel="stylesheet" href="common/css/style.css">
+    <link rel="stylesheet" href="/common/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/common/css/style.css">
     <style>
         body {
             background-color: #0B0C10;
