@@ -1,146 +1,180 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Trinket Trail</title>
+/*
+This script is setting up basic routing for a web application, 
+deciding which controller actions to execute based on the requested path. 
+The .htaccess file makes sure that all requests go through index.php, while passing the path as a query parameter. 
+It also includes a setup for environment-specific configurations and error handling, 
+leveraging the Dotenv library for environment variable management. 
+The script handles both GET and POST requests, 
+directing to the appropriate controller and method based on the path in the URL.
+*/
 
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+// Require necessary files and classes
+require_once 'vendor/autoload.php'; // Autoloads classes from the 'vendor' directory (Composer)
+require_once __DIR__ . '/controllers/ProductController.php'; // Include the ProductController class
+require_once __DIR__ . '/controllers/CartController.php'; // Include the CartController class
 
-    <!-- Custom styles -->
-    <style>
-        body {
-            background-color: #0B0C10;
-            color: #C5C6C7;
-        }
+// Use Dotenv namespace for loading environment variables
+use Dotenv\Dotenv;
 
-        .navbar {
-            background-color: #1F2833;
-        }
+// Create a new Dotenv instance pointing to the directory where .env file exists (current directory)
+$dotenv = Dotenv::createImmutable(__DIR__);
+// Load environment variables from .env file into PHP's $_ENV array
+$dotenv->load();
 
-        .navbar-toggler-icon::after {
-            display: block;
-            background-color: #C5C6C7;
-            height: 3px; /* Adjust height if needed */
-            width: 22px; /* Adjust width if needed */
-            margin-top: 3px; /* Adjust spacing between lines if needed */
-        }
+// Define a constant to determine if the environment is a production or staging/test environment
+define('PRODENV', $_ENV['PRODENV'] === 'true' ? true : false);
 
-        .navbar-dark .navbar-toggler {
-            border-color: #C5C6C7;
-        }
+// Enable detailed error reporting if not in production environment
+if (!PRODENV) {
+    error_reporting(E_ALL);
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', 1);
+}
 
-        .navbar-nav .nav-link {
-            color: #C5C6C7;
-        }
+// Get the 'path' parameter from the query string (all requests go through index.php as index.php?path=x)
+$path = $_GET['path'];
 
-        .navbar-nav .nav-link:hover {
-            color: #66FCF1;
-        }
+// Routing logic based on the request method and path
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+    // Product viewing
+    // Match path for list of products
+    if ($path === 'products/list') {
+        $controller = new ProductController();
+        $controller->listProducts();
+        // Match path for a single product
+    } elseif (preg_match('#^products/(\d+)$#', $path, $matches)) {
+        $productId = $matches[1]; // Extract the product ID from the URL
+        $controller = new ProductController();
+        $controller->showProduct($productId);
+    }
 
-        .container {
-            margin-top: 50px;
-        }
+    // Product management
+    if ($path === 'products/create') {
+        // TODO: Implement product creation
+        return;
+    } elseif (preg_match('#^products/edit/(\d+)$#', $path, $matches)) {
+        // TODO: Implement product editing
+        return;
+    } elseif (preg_match('#^products/delete/(\d+)$#', $path, $matches)) {
+        // TODO: Implement product deletion
+        return;
+    }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            color: #66FCF1;
-        }
+    // Cart management
+    // Match path for viewing the cart
+    if ($path === 'cart') {
+        $controller = new CartController();
+        $controller->showCart();
+    } elseif ($path === 'cart/update') {
+        // TODO: Implement cart update
+        return;
+    } elseif (preg_match('#^cart/delete/(\d+)$#', $path, $matches)) {
+        // TODO: Implement item removal from cart
+        return;
+    }
 
-        .navbar-brand {
-            order: -1; /* Set the order to place it on the left */
-            margin-right: 15px; /* Adjust margin as needed */
-        }
+    // Order processing
+    if ($path === 'order/checkout') {
+        // TODO: Implement checkout process
+        return;
+    } elseif ($path === 'order/confirm') {
+        // TODO: Implement order confirmation
+        return;
+    } elseif ($path === 'order/payment') {
+        // TODO: Implement payment processing
+        return;
+    } elseif ($path === 'order/success') {
+        // TODO: Implement success message after order placement
+        return;
+    }
 
-        .search-form {
-            order: 1; /* Set the order to place it in the middle */
-            margin-right: 10px;
-        }
 
-        .navbar-toggler {
-            order: 2; /* Set the order to place it on the right */
-        }
+    // User Account Management
+    if ($path === 'user/dashboard') {
+        // TODO: Implement user dashboard
+        return;
+    } elseif ($path === 'user/edit') {
+        // TODO: Implement user profile editing
+        return;
+    } elseif ($path === 'user/orders') {
+        // TODO: Implement user order history
+        return;
+    } elseif (preg_match('#^user/orders/view/(\d+)$#', $path, $matches)) {
+        // TODO: Implement specific order view
+        return;
+    } elseif ($path === 'user/password/change') {
+        // TODO: Implement password change
+        return;
+    }
 
-        /* Add a new class for dropdown items */
-        .navbar-nav-dropdown {
-            order: 3; /* Set the order to place it on the right */
-        }
+    // Admin Panel
+    if ($path === 'admin/dashboard') {
+        // TODO: Implement admin dashboard
+        return;
+    } elseif ($path === 'admin/orders') {
+        // TODO: Implement orders management in admin panel
+        return;
+    } elseif ($path === 'admin/products') {
+        // TODO: Implement product management in admin panel
+        return;
+    } elseif ($path === 'admin/users') {
+        // TODO: Implement user management in admin panel
+        return;
+    }
 
-        @media (min-width: 768px) {
-            /* Apply styles for screens larger than or equal to 768px */
-            .navbar-nav {
-                order: 1; /* Set the order to place it on the left */
-            }
+    // Authentication and Authorization
+    if ($path === 'auth/logout') {
+        // TODO: Implement logout functionality
+        return;
+    } elseif ($path === 'auth/forgot-password') {
+        // TODO: Implement password recovery
+        return;
+    } elseif ($path === 'auth/reset-password') {
+        // TODO: Implement password reset
+        return;
+    }
 
-            .search-form {
-                order: 2; /* Set the order to place it in the middle */
-            }
+    // Reviews and Ratings
+    if (preg_match('#^products/reviews/(\d+)$#', $path, $matches)) {
+        // TODO: Implement product reviews
+        return;
+    }
 
-            .navbar-toggler {
-                order: 3; /* Set the order to place it on the right */
-            }
+    // Wishlist
+    if (preg_match('#^wishlist/add/(\d+)$#', $path, $matches)) {
+        // TODO: Implement adding to wishlist
+        return;
+    } elseif ($path === 'wishlist/view') {
+        // TODO: Implement viewing wishlist
+        return;
+    }
 
-            .navbar-nav-dropdown {
-                order: 4; /* Set the order to place it on the right */
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
-        <!-- Trinket Trail text with a hyperlink to the left -->
-        <a class="navbar-brand" href="index.php">Trinket Trail</a>
-        <!-- Navbar links on the left -->
-        <div class="collapse navbar-collapse navbar-nav" id="navbarResponsive">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Saved Items</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="profile.php">View Profile</a>
-                </li>
-            </ul>
-        </div>
-        <!-- Search bar in the middle -->
-        <form class="form-inline ml-auto search-form">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <!-- Navbar toggler on the right -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </nav>
-
-    <!-- Page Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="my-4">Welcome to Trinket Trail</h1>
-                <p>Find great deals on unique trinkets and treasures.</p>
-            </div>
-        </div>
-        <!-- Add more content as needed -->
-    </div>
-
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-
-</body>
-
-</html>
+    // TODO: added the following temporary paths so these URLs keep working until they are properly routed through a controller
+    if ($path === 'about') {
+        require_once __DIR__ . '/views/about.php';
+    } elseif ($path === 'listing') {
+        require_once __DIR__ . '/views/listing.php';
+    } elseif ($path === 'login') {
+        require_once __DIR__ . '/views/user/login.php';
+    } elseif ($path === 'register' || $path === 'signup') {
+        require_once __DIR__ . '/views/user/register.php';
+    } else {
+        // Display 404 Not Found if no matching route
+        require_once __DIR__ . '/views/error-pages/404.php';
+    }
+} else {
+    // Handling POST requests
+    if ($path === 'cart/add') {
+        $controller = new ProductController();
+        $controller->addToCart();
+    } else if ($path === 'search') {
+        $controller = new ProductController();
+        $controller->searchProducts();
+    } else {
+        // Display 404 Not Found if no matching route
+        // TODO: render 404 page
+        echo "404 Not Found";
+    }
+}

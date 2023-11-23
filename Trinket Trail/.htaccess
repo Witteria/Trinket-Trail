@@ -1,0 +1,22 @@
+# .htaccess file
+# Purpose: Used for configuring individual directory settings on an Apache webserver.
+# This file in particular is used for URL rewriting
+
+# Enable the rewrite engine which allows for URL manipulation
+RewriteEngine On
+
+# Set the base URL for all rewrite rules below (usually /)
+RewriteBase /trinket-trail/
+
+# Conditions to ensure that the server only rewrites URLs for files and directories that don't actually exist.
+# -f checks for the existence of a file
+# -d checks for the existence of a directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Rewrite rule to forward all requests (except for real files and directories) to index.php
+# ^(.*)$ is a regular expression (regex) that matches any request and captures it into $1
+# index.php?path=$1 appends the captured request to a 'path' query parameter, 
+# so that the index.php file can process and dispatch it to the correct PHP controller
+# [QSA,L] flags: QSA appends existing query string, L stops processing further rules if this one matches
+RewriteRule ^(.*)$ index.php?path=$1 [QSA,L]
