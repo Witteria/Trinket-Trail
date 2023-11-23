@@ -55,7 +55,7 @@
                                      <div class="picture-container">
                                           <div class="picture">
                                               <img src="assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title=""/>
-                                              <input type="file" id="wizard-picture">
+                                              <input type="file" id="wizard-picture" name="picture">
                                           </div>
                                           <h6>Choose Picture</h6>
                                       </div>
@@ -63,17 +63,21 @@
                                   <div class="col-sm-6">
                                       <div class="form-group">
                                         <label>First Name <small>(required)</small></label>
-                                        <input name="firstname" type="text" class="form-control" placeholder="Andrew...">
+                                        <input name="firstname" type="text" class="form-control" placeholder="Andrew..." required>
                                       </div>
                                       <div class="form-group">
                                         <label>Last Name <small>(required)</small></label>
-                                        <input name="lastname" type="text" class="form-control" placeholder="Smith...">
+                                        <input name="lastname" type="text" class="form-control" placeholder="Smith..." required>
                                       </div>
                                   </div>
                                   <div class="col-sm-10 col-sm-offset-1">
                                       <div class="form-group">
                                           <label>Email <small>(required)</small></label>
-                                          <input name="email" type="email" class="form-control" placeholder="andrew@creative-tim.com">
+                                          <input name="email" type="email" class="form-control" placeholder="andrew@creative-tim.com" required>
+                                      </div>
+                                      <div class="form-group">
+                                          <label>Password <small>(required)</small></label>
+                                          <input name="password" type="password" class="form-control" minlength="8" required>
                                       </div>
                                   </div>
                               </div>

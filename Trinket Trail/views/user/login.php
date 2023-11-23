@@ -5,7 +5,7 @@
   <title>Login Page</title>
 
   <?php
-    require_once('includes/stylesheets.php');
+    include_once(__DIR__ . '/../includes/stylesheets.php');
   ?>
 
 <style>
